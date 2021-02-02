@@ -34,7 +34,7 @@ namespace WindowsFormsApp6
                     tbArray[x, y].Size = new Size(30, 30);
                     tbArray[x, y].Multiline = true;
                     tbArray[x, y].MaxLength = 1;
-                    tbArray[x, y].Font = new Font("宋体", 16F);
+                    tbArray[x, y].Font = new Font("庞门正道标题体", 16F);
                     tbArray[x, y].TextAlign = HorizontalAlignment.Center;
                     tbArray[x, y].KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
                     tbArray[x, y].Leave += new System.EventHandler(this.textBox_Leave);

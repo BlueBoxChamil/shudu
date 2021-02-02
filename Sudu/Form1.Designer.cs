@@ -42,10 +42,11 @@ namespace WindowsFormsApp6
             // 
             // btn1
             // 
-            this.btn1.Location = new System.Drawing.Point(331, 90);
-            this.btn1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn1.Font = new System.Drawing.Font("庞门正道标题体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn1.Location = new System.Drawing.Point(606, 150);
+            this.btn1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(91, 28);
+            this.btn1.Size = new System.Drawing.Size(166, 47);
             this.btn1.TabIndex = 0;
             this.btn1.Text = "生成数独";
             this.btn1.UseVisualStyleBackColor = true;
@@ -53,24 +54,26 @@ namespace WindowsFormsApp6
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("庞门正道标题体", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "简单",
             "中等",
             "困难"});
-            this.comboBox1.Location = new System.Drawing.Point(331, 30);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Location = new System.Drawing.Point(606, 50);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(92, 20);
+            this.comboBox1.Size = new System.Drawing.Size(165, 28);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.Text = "简单";
             // 
             // but2
             // 
-            this.but2.Location = new System.Drawing.Point(331, 149);
-            this.but2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.but2.Font = new System.Drawing.Font("庞门正道标题体", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.but2.Location = new System.Drawing.Point(606, 249);
+            this.but2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.but2.Name = "but2";
-            this.but2.Size = new System.Drawing.Size(91, 28);
+            this.but2.Size = new System.Drawing.Size(166, 47);
             this.but2.TabIndex = 2;
             this.but2.Text = "提交";
             this.but2.UseVisualStyleBackColor = true;
@@ -85,34 +88,37 @@ namespace WindowsFormsApp6
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(331, 207);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(606, 344);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 12);
+            this.label1.Size = new System.Drawing.Size(0, 20);
             this.label1.TabIndex = 3;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(331, 258);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Font = new System.Drawing.Font("庞门正道标题体", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(606, 430);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 12);
+            this.label2.Size = new System.Drawing.Size(107, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "错误次数：0";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 360);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(854, 600);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.but2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btn1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Font = new System.Drawing.Font("庞门正道标题体", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form1";
             this.Text = "数独";
             this.Load += new System.EventHandler(this.Form1_Load);
