@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp6
@@ -38,6 +39,18 @@ namespace WindowsFormsApp6
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.num_1 = new System.Windows.Forms.Button();
+            this.num_2 = new System.Windows.Forms.Button();
+            this.num_3 = new System.Windows.Forms.Button();
+            this.num_4 = new System.Windows.Forms.Button();
+            this.num_5 = new System.Windows.Forms.Button();
+            this.num_9 = new System.Windows.Forms.Button();
+            this.num_8 = new System.Windows.Forms.Button();
+            this.num_7 = new System.Windows.Forms.Button();
+            this.num_6 = new System.Windows.Forms.Button();
+            this.num_delete = new System.Windows.Forms.Button();
+            this.button_tip = new System.Windows.Forms.Button();
+            this.label_tip = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn1
@@ -106,12 +119,145 @@ namespace WindowsFormsApp6
             this.label2.TabIndex = 4;
             this.label2.Text = "错误次数：0";
             // 
+            // num_1
+            // 
+            this.num_1.Location = new System.Drawing.Point(43, 425);
+            this.num_1.Name = "num_1";
+            this.num_1.Size = new System.Drawing.Size(46, 45);
+            this.num_1.TabIndex = 5;
+            this.num_1.Text = "1";
+            this.num_1.UseVisualStyleBackColor = true;
+            this.num_1.Click += new System.EventHandler(this.num_Click);
+            // 
+            // num_2
+            // 
+            this.num_2.Location = new System.Drawing.Point(106, 425);
+            this.num_2.Name = "num_2";
+            this.num_2.Size = new System.Drawing.Size(46, 45);
+            this.num_2.TabIndex = 6;
+            this.num_2.Text = "2";
+            this.num_2.UseVisualStyleBackColor = true;
+            this.num_2.Click += new System.EventHandler(this.num_Click);
+            // 
+            // num_3
+            // 
+            this.num_3.Location = new System.Drawing.Point(170, 425);
+            this.num_3.Name = "num_3";
+            this.num_3.Size = new System.Drawing.Size(46, 45);
+            this.num_3.TabIndex = 7;
+            this.num_3.Text = "3";
+            this.num_3.UseVisualStyleBackColor = true;
+            this.num_3.Click += new System.EventHandler(this.num_Click);
+            // 
+            // num_4
+            // 
+            this.num_4.Location = new System.Drawing.Point(233, 425);
+            this.num_4.Name = "num_4";
+            this.num_4.Size = new System.Drawing.Size(46, 45);
+            this.num_4.TabIndex = 8;
+            this.num_4.Text = "4";
+            this.num_4.UseVisualStyleBackColor = true;
+            this.num_4.Click += new System.EventHandler(this.num_Click);
+            // 
+            // num_5
+            // 
+            this.num_5.Location = new System.Drawing.Point(299, 425);
+            this.num_5.Name = "num_5";
+            this.num_5.Size = new System.Drawing.Size(46, 45);
+            this.num_5.TabIndex = 9;
+            this.num_5.Text = "5";
+            this.num_5.UseVisualStyleBackColor = true;
+            this.num_5.Click += new System.EventHandler(this.num_Click);
+            // 
+            // num_9
+            // 
+            this.num_9.Location = new System.Drawing.Point(233, 477);
+            this.num_9.Name = "num_9";
+            this.num_9.Size = new System.Drawing.Size(46, 45);
+            this.num_9.TabIndex = 13;
+            this.num_9.Text = "9";
+            this.num_9.UseVisualStyleBackColor = true;
+            this.num_8.Click += new System.EventHandler(this.num_Click);
+            // 
+            // num_8
+            // 
+            this.num_8.Location = new System.Drawing.Point(170, 477);
+            this.num_8.Name = "num_8";
+            this.num_8.Size = new System.Drawing.Size(46, 45);
+            this.num_8.TabIndex = 12;
+            this.num_8.Text = "8";
+            this.num_8.UseVisualStyleBackColor = true;
+            this.num_8.Click += new System.EventHandler(this.num_Click);
+            // 
+            // num_7
+            // 
+            this.num_7.Location = new System.Drawing.Point(106, 477);
+            this.num_7.Name = "num_7";
+            this.num_7.Size = new System.Drawing.Size(46, 45);
+            this.num_7.TabIndex = 11;
+            this.num_7.Text = "7";
+            this.num_7.UseVisualStyleBackColor = true;
+            this.num_7.Click += new System.EventHandler(this.num_Click);
+            // 
+            // num_6
+            // 
+            this.num_6.Location = new System.Drawing.Point(43, 477);
+            this.num_6.Name = "num_6";
+            this.num_6.Size = new System.Drawing.Size(46, 45);
+            this.num_6.TabIndex = 10;
+            this.num_6.Text = "6";
+            this.num_6.UseVisualStyleBackColor = true;
+            this.num_6.Click += new System.EventHandler(this.num_Click);
+            // 
+            // num_delete
+            // 
+            this.num_delete.Location = new System.Drawing.Point(299, 477);
+            this.num_delete.Name = "num_delete";
+            this.num_delete.Size = new System.Drawing.Size(46, 45);
+            this.num_delete.TabIndex = 14;
+            this.num_delete.Text = "DE";
+            this.num_delete.UseVisualStyleBackColor = true;
+            this.num_delete.Click += new System.EventHandler(this.num_delete_Click);
+            // 
+            // button_tip
+            // 
+            this.button_tip.Location = new System.Drawing.Point(369, 425);
+            this.button_tip.Name = "button_tip";
+            this.button_tip.Size = new System.Drawing.Size(44, 97);
+            this.button_tip.TabIndex = 15;
+            this.button_tip.Text = "TIP";
+            this.button_tip.UseVisualStyleBackColor = true;
+            this.button_tip.Click += new System.EventHandler(this.button_tip_Click);
+            // 
+            // label_tip
+            // 
+            this.label_tip.AutoSize = true;
+            this.label_tip.Font = new System.Drawing.Font("庞门正道标题体", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_tip.Location = new System.Drawing.Point(606, 463);
+            this.label_tip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_tip.Name = "label_tip";
+            this.label_tip.Size = new System.Drawing.Size(108, 20);
+            this.label_tip.TabIndex = 16;
+            this.label_tip.Text = "提示次数：0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(854, 600);
+            this.ClientSize = new System.Drawing.Size(830, 558);
+            this.Controls.Add(this.label_tip);
+            this.Controls.Add(this.button_tip);
+            this.Controls.Add(this.num_delete);
+            this.Controls.Add(this.num_9);
+            this.Controls.Add(this.num_8);
+            this.Controls.Add(this.num_7);
+            this.Controls.Add(this.num_6);
+            this.Controls.Add(this.num_5);
+            this.Controls.Add(this.num_4);
+            this.Controls.Add(this.num_3);
+            this.Controls.Add(this.num_2);
+            this.Controls.Add(this.num_1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.but2);
@@ -135,6 +281,18 @@ namespace WindowsFormsApp6
         private Timer timer1;
         private Label label1;
         private Label label2;
+        private Button num_1;
+        private Button num_2;
+        private Button num_3;
+        private Button num_4;
+        private Button num_5;
+        private Button num_9;
+        private Button num_8;
+        private Button num_7;
+        private Button num_6;
+        private Button num_delete;
+        private Button button_tip;
+        private Label label_tip;
     }
 }
 

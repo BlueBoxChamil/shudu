@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp6
@@ -15,6 +16,10 @@ namespace WindowsFormsApp6
         TextBox[,] tbArray = new TextBox[9, 9];
 
         int error = 0;
+        int tip = 0;
+        int choose_x = -1;
+        int choose_y = -1;
+
         private void Form1_Load(object sender, EventArgs e)
         {
             // 
@@ -37,6 +42,8 @@ namespace WindowsFormsApp6
                     tbArray[x, y].Font = new Font("庞门正道标题体", 16F);
                     tbArray[x, y].TextAlign = HorizontalAlignment.Center;
                     tbArray[x, y].KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+                    tbArray[x, y].MouseDown += new MouseEventHandler(this.testBox_MouseDown);
+                    tbArray[x, y].Enter += new System.EventHandler(this.textBox_Enter);
                     tbArray[x, y].Leave += new System.EventHandler(this.textBox_Leave);
                     tbArray[x, y].ReadOnly = true;
                     tbArray[x, y].BackColor = System.Drawing.SystemColors.Info;
@@ -49,6 +56,14 @@ namespace WindowsFormsApp6
                 }
             }
             printArray(SuDu.getSuDu());
+        }
+
+        [DllImport("user32", EntryPoint = "HideCaret")]
+        private static extern bool HideCaret(IntPtr hWnd);
+
+        private void testBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            HideCaret(((TextBox)sender).Handle);
         }
 
         /// <summary>
@@ -275,5 +290,134 @@ namespace WindowsFormsApp6
             }
 
         }
+       
+        /// <summary>
+        /// 通过光标确认文本框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string[] name = textBox.Name.Split(',');
+            choose_x = Convert.ToInt32(name[0]);
+            choose_y = Convert.ToInt32(name[1]);
+         //   MessageBox.Show(String.Format("行数={0},列数={1}", choose_x, choose_y));
+        }
+
+        /// <summary>
+        /// 检查通过按键输入的值是否正确
+        /// </summary>
+        /// <param name="btn_num"></param>
+        private void check_num(Button btn_num)
+        {
+            //获取该位置的正确值plant
+            int plate = SuDu.arrray9_9[choose_x][choose_y];
+            //判断填入值是否正确
+            if (plate != Convert.ToInt32(btn_num.Text))
+            {
+                error++;
+                tbArray[choose_x, choose_y].ForeColor = System.Drawing.Color.Red;
+                this.label2.Text = "错误次数:" + error;
+            }
+            else
+            {
+                tbArray[choose_x, choose_y].ForeColor = System.Drawing.Color.Black;
+                int ret = check_num_x(btn_num);
+                if(ret >= 9)
+                {
+                    //MessageBox.Show(String.Format("恭喜完成数字{0}", Convert.ToInt32(btn_num.Text)));
+                    btn_num.BackColor = System.Drawing.Color.Gray;
+                    btn_num.Enabled = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 检查某个数字是否完成
+        /// </summary>
+        /// <param name="btn_num_x"></param>
+        /// <returns></returns>
+        private int check_num_x(Button btn_num_x)
+        {
+            int[,]  num_x_array = new int[9, 2];
+            int k = 0;
+            for(int i = 0; i < 9; i++)
+            {
+                for(int j = 0; j < 9; j++)
+                {
+                    if(tbArray[i, j].Text == btn_num_x.Text)
+                    {
+                        num_x_array[k, 0] = i;
+                        num_x_array[k, 1] = j;
+                        k++;
+                    }
+                }
+            }
+            return k;
+        }
+
+        /// <summary>
+        /// 数字选择按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void num_Click(object sender, EventArgs e)
+        {
+            Button btn_num = (Button)sender;
+            tbArray[choose_x, choose_y].Text = btn_num.Text;
+            check_num(btn_num);
+        }
+
+        /// <summary>
+        /// 删除按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void num_delete_Click(object sender, EventArgs e)
+        {
+            if (tbArray[choose_x, choose_y].ForeColor != System.Drawing.Color.Green)
+            {
+                Button btn_num = (Button)sender;
+                tbArray[choose_x, choose_y].Text = "";
+            }
+        }
+
+        /// <summary>
+        /// 提示按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_tip_Click(object sender, EventArgs e)
+        {
+            if ((choose_x >= 0) && (choose_y >= 0))
+            {
+                if(string.IsNullOrEmpty(tbArray[choose_x, choose_y].Text))
+                {
+                    int plate = SuDu.arrray9_9[choose_x][choose_y];
+                    tbArray[choose_x, choose_y].Text = Convert.ToString(plate);
+                    tbArray[choose_x, choose_y].ForeColor = System.Drawing.Color.Green;
+                    tip++;
+                    this.label_tip.Text = "提示次数:" + tip;
+                }
+                else
+                {
+                    int plate = SuDu.arrray9_9[choose_x][choose_y];
+                    if (plate != Convert.ToInt32(tbArray[choose_x, choose_y].Text))
+                    {
+                        tbArray[choose_x, choose_y].Text = Convert.ToString(plate);
+                        tbArray[choose_x, choose_y].ForeColor = System.Drawing.Color.Green;
+                        tip++;
+                        this.label_tip.Text = "提示次数:" + tip;
+                    }
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show(String.Format("请选择需要提示的位置~"));
+            }
+        }
+
     }
 }
