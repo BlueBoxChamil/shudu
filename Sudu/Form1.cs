@@ -255,7 +255,7 @@ namespace WindowsFormsApp6
             this.label1.Text = DateTime.Now.ToString();
         }
 
-
+        //检查错误次数
         private void textBox_Leave(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -273,6 +273,7 @@ namespace WindowsFormsApp6
             {
                 textBox.ForeColor = System.Drawing.Color.Black;
             }
+
         }
     }
 }

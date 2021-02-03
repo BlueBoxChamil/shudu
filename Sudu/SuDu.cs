@@ -44,14 +44,16 @@ namespace WindowsFormsApp6
             CreatSudoku3_3(randomList);
 
             //对每个3*3数组进行打乱
-            ChangeSudoku3_3();
+            //ChangeSudoku3_3();
 
             //将3*3数组合并为9*9数组
-            int[][] result = creatSudokuArray(arrray9_9);
+            int[][] result_1 = creatSudokuArray(arrray9_9);
+
+            //将9 * 9数组进行行置换或者列置换
+            int[][] result = ChangeSudoku9_9(arrray9_9);
 
             //打印二维数组，数独矩阵
             printArray(result);
-
 
             return result;
         }
@@ -73,7 +75,7 @@ namespace WindowsFormsApp6
                 }
                 charss += newline;
             }
-            
+           
             Write(charss);
         }
 
@@ -159,7 +161,7 @@ namespace WindowsFormsApp6
         }
 
         /// <summary>
-        /// 对每个3*3数组进行打乱
+        /// 对每个3*3数组进行打乱,
         /// </summary>
         private static void ChangeSudoku3_3()
         {
@@ -278,6 +280,65 @@ namespace WindowsFormsApp6
                 arrray_9[ret_i, ret_j1] = arrray_9[ret_i, ret_j2];
                 arrray_9[ret_i, ret_j2] = temp;
             }
+        }
+
+        /// <summary>
+        /// 将9*9数组进行行置换或者列置换
+        /// </summary>
+        /// <param name="seedArray"></param>
+        /// <returns></returns>
+        private static int[][] ChangeSudoku9_9(int[][] seedArray)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Random random = new Random();
+                
+                //选择行或者列
+                int ret_row_or_column = random.Next(0, 2);
+
+                //选择某行或者某列
+                int ret = random.Next(0, 9);
+
+                int ret_add = random.Next(1, 3);
+
+
+                //选择交换的行列数
+                int ret_change;
+
+                if (((ret + ret_add) / 3) != (ret /3))
+                {
+                    ret_change = ((ret + ret_add)/3 -1) * 3 + (ret + ret_add)%3;
+                }
+                else
+                {
+                    ret_change = ret + ret_add;
+                }
+
+                int ret_temp;
+
+                //行置换
+                if(ret_row_or_column == 0)
+                {
+                    for (int j = 0; j < 9; j++)
+                    {
+                        ret_temp = seedArray[ret][j];
+                        seedArray[ret][j] = seedArray[ret_change][j];
+                        seedArray[ret_change][j] = ret_temp;
+                    }
+                }
+                //列置换
+                else
+                {
+                    for (int j = 0; j < 9; j++)
+                    {
+                        ret_temp = seedArray[j][ret];
+                        seedArray[j][ret] = seedArray[j][ret_change];
+                        seedArray[j][ret_change] = ret_temp;
+                    }
+                }
+
+            }
+            return seedArray;
         }
 
         /// <summary>
